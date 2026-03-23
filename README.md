@@ -1,6 +1,8 @@
-# User Guide
+<img width="1794" height="848" alt="image" src="https://github.com/user-attachments/assets/ebff038a-8765-43a2-a9fc-035faa77f04d" /># User Guide
 
 **HireME** is a **desktop app for managing internship applications, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, HireME lets you manage your internship hunt more efficiently than fiddling around with spreadsheets or Notion boards.
+
+<img width="946" height="790" alt="image" src="https://github.com/user-attachments/assets/9a120773-6daa-4bcc-8be6-3c8f2783e96b" />
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -59,9 +61,9 @@
 
 ### Viewing help : `help`
 
-Don't remember a command? No worries — `help` opens a window with a quick reference of all available commands and their formats.
+<img width="622" height="452" alt="image" src="https://github.com/user-attachments/assets/415a3b68-2d8c-46dc-95a1-ad3e44bc7079" />
 
-![help message](images/helpMessage.png)
+Don't remember a command? No worries — `help` opens a window with a quick reference of all available commands and their formats.
 
 Format: `help`
 
@@ -97,11 +99,17 @@ Examples:
 
 ### Listing all applications : `list`
 
+<img width="945" height="787" alt="image" src="https://github.com/user-attachments/assets/4cb72b61-ee19-4402-bf2e-3aea9e25d1dd" />
+
 Shows a list of all your applications in HireME.
 
 Format: `list`
 
 ### Editing an application : `edit`
+
+<img width="946" height="790" alt="image" src="https://github.com/user-attachments/assets/e96fb283-4e14-4647-959a-bb26f75ccb5f" /> <br>
+
+<img width="946" height="369" alt="image" src="https://github.com/user-attachments/assets/a591f2ed-e744-43db-85d5-e5a42e059827" />
 
 Edits an existing application in HireME. Use this when you need to update details like a new status or corrected information.
 
@@ -120,6 +128,9 @@ Examples:
 
 ### Locating applications by company name: `find`
 
+<img width="946" height="374" alt="image" src="https://github.com/user-attachments/assets/5ebf6149-2fe2-4848-b894-a3646b87af0b" />
+
+
 Finds applications whose company names contain any of the given keywords.
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
@@ -137,6 +148,9 @@ Examples:
 
 ### Deleting an application : `delete`
 
+<img width="946" height="368" alt="image" src="https://github.com/user-attachments/assets/ed45abd6-390b-42e9-831d-d34dd9ce2a68" />
+
+
 Deletes the specified application from HireME.
 
 Format: `delete INDEX`
@@ -150,6 +164,8 @@ Examples:
 * `find Google` followed by `delete 1` deletes the 1st application in the results of the `find` command.
 
 ### Clearing all entries : `clear`
+
+<img width="946" height="213" alt="image" src="https://github.com/user-attachments/assets/95e8ce4d-48ed-4f0d-81e7-beabc025b3e1" />
 
 Clears all application entries from HireME. Useful if you want a fresh start (e.g. new internship cycle).
 
