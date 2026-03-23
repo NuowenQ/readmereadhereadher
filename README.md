@@ -155,7 +155,8 @@ Clears all application entries from HireME. Useful if you want a fresh start (e.
 
 Format: `clear`
 
-> **Caution:** This action is irreversible. All your application data will be permanently deleted.
+> [!CAUTION]
+> This action is irreversible. All your application data will be permanently deleted.
 
 ### Exiting the program : `exit`
 
