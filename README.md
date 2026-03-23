@@ -83,7 +83,8 @@ Format: `add n/COMPANY_NAME r/ROLE [e/EMAIL] w/WEBSITE a/ADDRESS d/DATE s/STATUS
 | Status | `s/` | Yes | Must be `Offered`, `Pending`, or `Rejected` (case-insensitive) |
 | Tag | `t/` | No | Alphanumeric only, no spaces. Can have multiple tags           |
 
-> **Tip:** An application can have any number of tags (including 0). Tags are handy for labelling things like `remote`, `onsite`, `highPriority`, etc.
+> [!TIP]
+> An application can have any number of tags (including 0). Tags are handy for labelling things like `remote`, `onsite`, `highPriority`, etc.
 
 > **Note:** Two applications are considered duplicates if they have the same **company name** and **role**. HireME will not allow you to add a duplicate.
 
