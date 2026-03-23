@@ -1,8 +1,3 @@
----
-layout: page
-title: User Guide
----
-
 **HireME** is a **desktop app for managing internship applications, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, HireME lets you manage your internship hunt more efficiently than fiddling around with spreadsheets or Notion boards.
 
 --------------------------------------------------------------------------------------------------------------------
