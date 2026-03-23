@@ -88,7 +88,8 @@ Format: `add n/COMPANY_NAME r/ROLE [e/EMAIL] w/WEBSITE a/ADDRESS d/DATE s/STATUS
 > [!TIP]
 > An application can have any number of tags (including 0). Tags are handy for labelling things like `remote`, `onsite`, `highPriority`, etc.
 
-> **Note:** Two applications are considered duplicates if they have the same **company name** and **role**. HireME will not allow you to add a duplicate.
+> [!NOTE]
+> Two applications are considered duplicates if they have the same **company name** and **role**. HireME will not allow you to add a duplicate.
 
 Examples:
 * `add n/Google r/Software Engineer w/https://careers.google.com a/70 Pasir Panjang Rd d/15-03-2026 s/Pending`
