@@ -126,25 +126,36 @@ Examples:
 *  `edit 2 r/Backend Developer Intern e/johndoe@example.com` Edits the role and email of the 2nd application.
 *  `edit 3 t/` Clears all existing tags from the 3rd application.
 
-### Locating applications by company name: `find`
+### Locating applications: `find`
 
-<img width="946" height="374" alt="image" src="https://github.com/user-attachments/assets/5ebf6149-2fe2-4848-b894-a3646b87af0b" />
+Finds applications that match the specified keywords.
 
+Format: `find [n/NAME] [r/ROLE] [e/EMAIL] [w/WEBSITE] [a/ADDRESS] [d/DATE] [s/STATUS] [t/TAG]...`
 
-Finds applications whose company names contain any of the given keywords.
-
-Format: `find KEYWORD [MORE_KEYWORDS]`
-
-* The search is case-insensitive. e.g. `google` will match `Google`
-* The order of the keywords does not matter. e.g. `Google Meta` will match `Meta Google`
-* Only the company name is searched.
-* Only full words will be matched e.g. `Goo` will **not** match `Google`
-* Applications matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Google Meta` will return applications for both `Google` and `Meta`
+* All fields are optional. At least one field must be provided.
+* The search is case-insensitive. 
+  e.g `find n/google` will match `Google`.
+* Partial matching is supported. 
+  e.g. `find n/goog` will match `Google`.
+* Multiple fields are combined using **AND** logic.
+  e.g. `find n/Google r/Backend Developer` returns applications that match both name and role.
+* For tags, multiple keywords are combined using **OR** logic.
+  e.g. `find t/backend developer t/frontend developer` returns applications that match either tag.
+* For optional fields (`email`, `website`, `address`): 
+  Using an empty prefix (e.g. e/) matches applications with no value for that field.
 
 Examples:
-* `find Google` returns applications for `google` and `Google`
-* `find Google Meta` returns all applications with company names matching `Google` or `Meta`
+* `find n/google`
+  Returns applications with company names containing "google"
+* `find r/intern s/applied`
+  Returns applications with role containing "intern" and status containing "applied"
+* `find e/gmail`
+  Returns applications with email containing "gmail"
+* `find e/`
+  Returns applications that have no email
+* `find t/oa t/fintech`
+  Returns applications tagged with either "oa" or "fintech"
+
 
 ### Deleting an application : `delete`
 
