@@ -78,7 +78,7 @@ Format: `help`
 
 Adds an internship application to HireME.
 
-Format: `add n/COMPANY_NAME r/ROLE [e/EMAIL] w/WEBSITE a/ADDRESS d/DATE s/STATUS [t/TAG]…​`
+Format: `add n/COMPANY_NAME r/ROLE [e/EMAIL] [w/WEBSITE] [a/ADDRESS] d/DATE s/STATUS [t/TAG]…​`
 
 **Parameter details:**
 
@@ -87,8 +87,8 @@ Format: `add n/COMPANY_NAME r/ROLE [e/EMAIL] w/WEBSITE a/ADDRESS d/DATE s/STATUS
 | Company Name | `n/` | Yes | Alphanumeric characters and spaces only |
 | Role | `r/` | Yes | Alphanumeric characters and spaces only |
 | Email | `e/` | No | Must follow `local-part@domain` format |
-| Website | `w/` | Yes | Must be a valid website |
-| Address | `a/` | Yes | Must not be blank |
+| Website | `w/` | No | Must be a valid website |
+| Address | `a/` | No | Must not be blank |
 | Date | `d/` | Yes | Must be in `DD-MM-YYYY` format |
 | Status | `s/` | Yes | Must be `Offered`, `Pending`, or `Rejected` (case-insensitive) |
 | Tag | `t/` | No | Alphanumeric only, no spaces. Can have multiple tags |
@@ -107,7 +107,7 @@ Examples:
 
 <img width="945" height="787" alt="image" src="https://github.com/user-attachments/assets/4cb72b61-ee19-4402-bf2e-3aea9e25d1dd" />
 
-Shows a list of all your applications in HireME.
+Shows a list of all unarchived applications in HireME. Archived applications are hidden from this view.
 
 Format: `list`
 
@@ -126,6 +126,7 @@ Format: `edit INDEX [n/COMPANY_NAME] [r/ROLE] [e/EMAIL] [w/WEBSITE] [a/ADDRESS] 
 * Existing values will be overwritten by the input values.
 * When editing tags, the existing tags of the application will be **replaced entirely** — editing tags is not cumulative.
 * You can remove all the application's tags by typing `t/` without specifying any tags after it.
+* You can remove an optional field (email, website, address) by typing the prefix without any value after it (e.g. `e/`, `w/`, `a/`).
 
 Examples:
 *  `edit 1 s/Offered` Updates the status of the 1st application to `Offered`. Congrats!
@@ -227,6 +228,26 @@ Examples:
 * `find t/archived`
 * `unarchive 1` restores the 1st archived application.
 
+### Opening application notes : `open`
+
+Opens the notes for an application. You can view existing notes or edit them.
+
+Format: `open INDEX [m/CHOICE_OF_EDIT]`
+
+* Opens the notes for the application at the specified `INDEX`.
+* The index refers to the index number shown in the displayed application list. The index **must be a positive integer** 1, 2, 3, …​
+* `m/` is optional. Set `m/true` to edit the notes, or `m/false` (or omit `m/`) to just view them.
+
+Examples:
+* `open 1` Views the notes for the 1st application.
+* `open 2 m/true` Opens the notes for the 2nd application in edit mode.
+
+### Viewing application summary : `summary`
+
+Shows a summary of your application statistics, including total applications, number pending, offered, rejected, success rate, and archived count.
+
+Format: `summary`
+
 ### Clearing all entries : `clear`
 
 <img width="946" height="213" alt="image" src="https://github.com/user-attachments/assets/95e8ce4d-48ed-4f0d-81e7-beabc025b3e1" />
@@ -284,12 +305,14 @@ HireME data is saved automatically as a JSON file `[JAR file location]/data/Hire
 
 | Action | Format | Example |
 |--------|--------|---------|
-| **Add** | `add n/COMPANY_NAME r/ROLE [e/EMAIL] w/WEBSITE a/ADDRESS d/DATE s/STATUS [t/TAG]…​` | `add n/Google r/Software Engineer w/https://careers.google.com a/70 Pasir Panjang Rd d/15-03-2026 s/Pending t/tech` |
+| **Add** | `add n/COMPANY_NAME r/ROLE [e/EMAIL] [w/WEBSITE] [a/ADDRESS] d/DATE s/STATUS [t/TAG]…​` | `add n/Google r/Software Engineer w/https://careers.google.com a/70 Pasir Panjang Rd d/15-03-2026 s/Pending t/tech` |
 | **Edit** | `edit INDEX [n/COMPANY_NAME] [r/ROLE] [e/EMAIL] [w/WEBSITE] [a/ADDRESS] [d/DATE] [s/STATUS] [t/TAG]…​` | `edit 1 s/Offered` |
 | **Delete** | `delete INDEX` | `delete 3` |
 | **Find** | `find [n/NAME] [r/ROLE] [e/EMAIL] [w/WEBSITE] [a/ADDRESS] [d/DATE] [s/STATUS] [t/TAG]...` | `find n/Google` |
 | **Archive** | `archive INDEX` | `archive 2` |
 | **Unarchive** | `unarchive INDEX` | `unarchive 1` |
+| **Open** | `open INDEX [m/CHOICE_OF_EDIT]` | `open 1 m/true` |
+| **Summary** | `summary` | |
 | **List** | `list` | |
 | **Clear** | `clear` | |
 | **Help** | `help` | |
