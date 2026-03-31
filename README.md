@@ -1,8 +1,14 @@
-# User Guide
+---
+layout: page
+title: User Guide
+---
 
 **HireME** is a **desktop app for managing internship applications, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, HireME lets you manage your internship hunt more efficiently than fiddling around with spreadsheets or Notion boards.
 
 <img width="946" height="790" alt="image" src="https://github.com/user-attachments/assets/9a120773-6daa-4bcc-8be6-3c8f2783e96b" />
+
+* Table of Contents
+{:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -38,26 +44,26 @@
 
 ## Features
 
-**Notes about the command format:**
-
-* Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add n/COMPANY_NAME`, `COMPANY_NAME` is a parameter which can be used as `add n/Google`.
-
-* Items in square brackets are optional.<br>
-  e.g. `n/COMPANY_NAME [e/EMAIL]` can be used as `n/Google e/hr@google.com` or as `n/Google`.
-
-* Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/tech`, `t/tech t/remote` etc.
-
-* Parameters can be in any order.<br>
-  e.g. if the command specifies `n/COMPANY_NAME r/ROLE`, `r/ROLE n/COMPANY_NAME` is also acceptable.
-
-* Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
-  e.g. if the command specifies `help 123`, it will be interpreted as `help`.
-
-* Each parameter (except tags) should only appear once in a command. If you accidentally provide duplicates (e.g. `n/Google n/Meta`), the app will flag an error.
-
-* If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
+> **Notes about the command format:**
+>
+> * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
+>   e.g. in `add n/COMPANY_NAME`, `COMPANY_NAME` is a parameter which can be used as `add n/Google`.
+>
+> * Items in square brackets are optional.<br>
+>   e.g. `n/COMPANY_NAME [e/EMAIL]` can be used as `n/Google e/hr@google.com` or as `n/Google`.
+>
+> * Items with `…`​ after them can be used multiple times including zero times.<br>
+>   e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/tech`, `t/tech t/remote` etc.
+>
+> * Parameters can be in any order.<br>
+>   e.g. if the command specifies `n/COMPANY_NAME r/ROLE`, `r/ROLE n/COMPANY_NAME` is also acceptable.
+>
+> * Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
+>   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
+>
+> * Each parameter (except tags) should only appear once in a command. If you accidentally provide duplicates (e.g. `n/Google n/Meta`), the app will flag an error.
+>
+> * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 
 ### Viewing help : `help`
 
@@ -76,16 +82,16 @@ Format: `add n/COMPANY_NAME r/ROLE [e/EMAIL] w/WEBSITE a/ADDRESS d/DATE s/STATUS
 
 **Parameter details:**
 
-| Parameter | Prefix | Required | Constraints                                                    |
-|-----------|--------|----------|----------------------------------------------------------------|
-| Company Name | `n/` | Yes | Alphanumeric characters and spaces only                        |
-| Role | `r/` | Yes | Alphanumeric characters and spaces only                        |
-| Email | `e/` | No | Must follow `local-part@domain` format                         |
-| Website | `w/` | Yes | Must be a valid website                                        |
-| Address | `a/` | Yes | Must not be blank                                              |
-| Date | `d/` | Yes | Must be in `DD-MM-YYYY` format                                 |
+| Parameter | Prefix | Required | Constraints |
+|-----------|--------|----------|-------------|
+| Company Name | `n/` | Yes | Alphanumeric characters and spaces only |
+| Role | `r/` | Yes | Alphanumeric characters and spaces only |
+| Email | `e/` | No | Must follow `local-part@domain` format |
+| Website | `w/` | Yes | Must be a valid website |
+| Address | `a/` | Yes | Must not be blank |
+| Date | `d/` | Yes | Must be in `DD-MM-YYYY` format |
 | Status | `s/` | Yes | Must be `Offered`, `Pending`, or `Rejected` (case-insensitive) |
-| Tag | `t/` | No | Alphanumeric only, no spaces. Can have multiple tags           |
+| Tag | `t/` | No | Alphanumeric only, no spaces. Can have multiple tags |
 
 > [!TIP]
 > An application can have any number of tags (including 0). Tags are handy for labelling things like `remote`, `onsite`, `highPriority`, etc.
@@ -128,21 +134,23 @@ Examples:
 
 ### Locating applications: `find`
 
+<img width="946" height="374" alt="image" src="https://github.com/user-attachments/assets/5ebf6149-2fe2-4848-b894-a3646b87af0b" />
+
 Finds applications that match the specified keywords.
 
 Format: `find [n/NAME] [r/ROLE] [e/EMAIL] [w/WEBSITE] [a/ADDRESS] [d/DATE] [s/STATUS] [t/TAG]...`
 
 * All fields are optional. At least one field must be provided.
-* The search is case-insensitive. 
-  e.g `find n/google` will match `Google`.
-* Partial matching is supported. 
+* The search is case-insensitive.
+  e.g. `find n/google` will match `Google`.
+* Partial matching is supported.
   e.g. `find n/goog` will match `Google`.
 * Multiple fields are combined using **AND** logic.
   e.g. `find n/Google r/Backend Developer` returns applications that match both name and role.
 * For tags, multiple keywords are combined using **OR** logic.
   e.g. `find t/backend developer t/frontend developer` returns applications that match either tag.
-* For optional fields (`email`, `website`, `address`): 
-  Using an empty prefix (e.g. e/) matches applications with no value for that field.
+* For optional fields (`email`, `website`, `address`):
+  Using an empty prefix (e.g. `e/`) matches applications with no value for that field.
 
 Examples:
 * `find n/google`
@@ -155,12 +163,25 @@ Examples:
   Returns applications that have no email
 * `find t/oa t/fintech`
   Returns applications tagged with either "oa" or "fintech"
+<br>
+<br>
+![find result for 'find t/oa t/fintech'](images/findOaFintech.png)
 
+### Viewing archived applications
+
+Displays all archived applications.
+
+Format: `find t/archived`
+
+* Shows all applications that are currently archived.
+* You can use the `unarchive INDEX` command on this list to restore applications.
+
+Example:
+* `find t/archived`
 
 ### Deleting an application : `delete`
 
 <img width="946" height="368" alt="image" src="https://github.com/user-attachments/assets/ed45abd6-390b-42e9-831d-d34dd9ce2a68" />
-
 
 Deletes the specified application from HireME.
 
@@ -172,7 +193,39 @@ Format: `delete INDEX`
 
 Examples:
 * `list` followed by `delete 2` deletes the 2nd application in the list.
-* `find Google` followed by `delete 1` deletes the 1st application in the results of the `find` command.
+* `find n/Google` followed by `delete 1` deletes the 1st application in the results of the `find` command.
+
+### Archiving an application : `archive`
+
+Archives the specified application so that it is hidden from the main list but still stored in the system.
+
+Format: `archive INDEX`
+
+* Archives the application at the specified `INDEX`.
+* The index refers to the index number shown in the currently displayed application list.
+* Archived applications will not appear in the normal `list` command.
+* Archiving an application does not delete it. The application is tagged as `archived` and hidden from the main list.
+* You can view archived applications using the `find t/archived` command.
+* The index **must be a positive integer** 1, 2, 3, …​
+
+Examples:
+* `archive 2` archives the 2nd application in the current list.
+* `find n/Google` followed by `archive 1` archives the 1st application in the search results.
+
+### Unarchiving an application : `unarchive`
+
+Restores an archived application back to the main application list.
+
+Format: `unarchive INDEX`
+
+* The `INDEX` refers to the index number shown in the archived applications list.
+* You must first view archived applications (e.g. using `find t/archived`) before using `unarchive`.
+* The application will be removed from archived status and will appear in the normal list again.
+* The index **must be a positive integer** 1, 2, 3, …​
+
+Examples:
+* `find t/archived`
+* `unarchive 1` restores the 1st archived application.
 
 ### Clearing all entries : `clear`
 
@@ -196,7 +249,8 @@ Format: `exit`
 HireME data is saved to your hard disk automatically after any command that changes the data. There is no need to save manually.
 
 ### Editing the data file
-HireME data is saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
+
+HireME data is saved automatically as a JSON file `[JAR file location]/data/HireME.json`. Advanced users are welcome to update data directly by editing that data file.
 
 > [!CAUTION]
 > If your changes to the data file make its format invalid, HireME will discard all data and start with an empty data file at the next run. It is recommended to take a backup of the file before editing it. Furthermore, certain edits can cause HireME to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Only edit the data file if you are confident you can update it correctly.
@@ -228,22 +282,25 @@ HireME data is saved automatically as a JSON file `[JAR file location]/data/addr
 
 ## Command summary
 
-| Action     | Format | Example |
-|------------|--------|---------|
-| **Add**    | `add n/COMPANY_NAME r/ROLE [e/EMAIL] w/WEBSITE a/ADDRESS d/DATE s/STATUS [t/TAG]…​` | `add n/Google r/Software Engineer w/https://careers.google.com a/70 Pasir Panjang Rd d/15-03-2026 s/Pending t/tech` |
-| **Edit**   | `edit INDEX [n/COMPANY_NAME] [r/ROLE] [e/EMAIL] [w/WEBSITE] [a/ADDRESS] [d/DATE] [s/STATUS] [t/TAG]…​` | `edit 1 s/Offered` |
+| Action | Format | Example |
+|--------|--------|---------|
+| **Add** | `add n/COMPANY_NAME r/ROLE [e/EMAIL] w/WEBSITE a/ADDRESS d/DATE s/STATUS [t/TAG]…​` | `add n/Google r/Software Engineer w/https://careers.google.com a/70 Pasir Panjang Rd d/15-03-2026 s/Pending t/tech` |
+| **Edit** | `edit INDEX [n/COMPANY_NAME] [r/ROLE] [e/EMAIL] [w/WEBSITE] [a/ADDRESS] [d/DATE] [s/STATUS] [t/TAG]…​` | `edit 1 s/Offered` |
 | **Delete** | `delete INDEX` | `delete 3` |
-| **Find**   | `find KEYWORD [MORE_KEYWORDS]` | `find Google Meta` |
-| **List**   | `list` | |
-| **Clear**  | `clear` | |
-| **Help**   | `help` | |
-| **Exit**   | `exit` | |
+| **Find** | `find [n/NAME] [r/ROLE] [e/EMAIL] [w/WEBSITE] [a/ADDRESS] [d/DATE] [s/STATUS] [t/TAG]...` | `find n/Google` |
+| **Archive** | `archive INDEX` | `archive 2` |
+| **Unarchive** | `unarchive INDEX` | `unarchive 1` |
+| **List** | `list` | |
+| **Clear** | `clear` | |
+| **Help** | `help` | |
+| **Exit** | `exit` | |
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Glossary
 
 1. **CLI:** Command Line Interface
-2. **Index:** Position of an item in the list
-3. **Application Status:** Current stage (Pending/Reject/Offered)
-
+2. **GUI:** Graphical User Interface
+3. **Index:** Position of an item in the displayed list
+4. **Application Status:** Current stage of an internship application (`Pending`, `Rejected`, or `Offered`)
+5. **Tag:** A label attached to an application for categorisation (e.g. `remote`, `tech`, `archived`)
